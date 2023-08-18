@@ -99,6 +99,3 @@ def stop_listener():
     if listener is not None:
         listener.stop()
         listener.join()
-
-
-start_listener()

@@ -5,8 +5,17 @@ from tinker import *
 
 dpg.create_context()
 dpg.create_viewport(title='D2S', width=1000, height=1000)
+
+def activate_deactivate_listener(Sender):
+    value = dpg.get_value(Sender)
+    print(value)
+    if value:
+        start_listener()
+    else:
+        stop_listener()
+
 with dpg.window(label="Tinker", width=500, height=500):
-    dpg.add_checkbox(label="Start/Stop Listening", callback=start_listener)
+    dpg.add_checkbox(label="Start/Stop Listening", callback=activate_deactivate_listener)
     dpg.add_slider_int(label="Level Rearm", default_value=1, max_value=3,min_value=1)
     
     with dpg.collapsing_header(label="Item",default_open=True):
