@@ -1,3 +1,5 @@
+import psutil
+
 from tinker import *
 
 dpg.create_context()
@@ -35,18 +37,19 @@ dpg.start_dearpygui()
 dpg.destroy_context()
 
 
-# def check_dota2_process():
-#     for proc in psutil.process_iter():
-#         if proc.name() == "dota2.exe":
-#             return True
-#     return False
+def check_dota2_process():
+    for proc in psutil.process_iter():
+        if proc.name() == "dota2.exe":
+            return True
+    return False
 
 
 def main():
-    # if check_dota2_process():
-    #     print("Dota 2 запущена")
-    # else:
-    #     print("Dota 2 не запущена")
+    print(f"Это тестовая версия скрипта без интерфейса")
+    if check_dota2_process():
+        print("Dota 2 запущена")
+    else:
+        print("Dota 2 не запущена")
     on_press()
 
 

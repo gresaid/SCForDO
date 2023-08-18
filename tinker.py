@@ -29,7 +29,6 @@ rearm_key = data['tinker']['skills']['rearm']
 cansel_button = data['main_conf']['cansel_button']
 combo_button = data['tinker']['main_combo_button']
 rocket_combo_button = data['tinker']['rocket_combo_button']
-rearm_combo_button = data['tinker']['rearm_combo_button']
 
 
 def main_combo():
