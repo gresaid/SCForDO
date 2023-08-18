@@ -5,10 +5,20 @@ from tinker import *
 
 dpg.create_context()
 dpg.create_viewport(title='D2S', width=1000, height=1000)
-
 with dpg.window(label="Tinker", width=500, height=500):
     dpg.add_checkbox(label="Start/Stop Listening", callback=start_listener)
     dpg.add_slider_int(label="Level Rearm", default_value=1, max_value=3,min_value=1)
+    
+    with dpg.collapsing_header(label="Item",default_open=True):
+        dpg.add_checkbox(label="Blink dagger")
+        dpg.add_checkbox(label="Soul Ring")
+        dpg.add_checkbox(label="Ethereal blade")
+        dpg.add_checkbox(label="Hex")
+    with dpg.collapsing_header(label="Skills",default_open=True):
+        dpg.add_checkbox(label="Laser")
+        dpg.add_checkbox(label="Rocket")
+        dpg.add_checkbox(label="Rearm")
+        
 dpg.setup_dearpygui()
 dpg.show_viewport()
 dpg.start_dearpygui()
