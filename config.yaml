@@ -1,0 +1,17 @@
+main_conf:
+  cansel_button: 's'
+
+tinker:
+  main_combo_button: 'd'
+  rocket_combo_button: 'z'
+  item:
+    blink: 1
+    soul_ring: 2
+    ethereal_blade: 3
+    shiva_guard: 4
+    hex_d: ' '
+  skills:
+    laser: 'q'
+    rocket: 'w'
+    matrix: 'e'
+    rearm: 'r'
