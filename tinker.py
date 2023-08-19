@@ -13,7 +13,7 @@ with open('config.yaml', 'r') as file:
 pressed = False
 listener = None
 
-delay = random.uniform(0.05, 0.15)
+delay = random.uniform(0.05, 0.10)
 long_delay = random.uniform(0.1, 0.2)
 
 blink_value_key = data['tinker']['item']['blink']
@@ -29,6 +29,7 @@ rearm_key = data['tinker']['skills']['rearm']
 cansel_button = data['main_conf']['cansel_button']
 combo_button = data['tinker']['main_combo_button']
 rocket_combo_button = data['tinker']['rocket_combo_button']
+rearm_combo_button = data['tinker']['rearm_combo_button']
 
 
 def main_combo():
@@ -37,8 +38,8 @@ def main_combo():
         time.sleep(delay)
     if dpg.get_value("soul_ring_key"):
         soul_ring(keyboard.KeyCode.from_char(f'{soul_ring_key}'))
-        time.sleep(delay)
     if dpg.get_value("Hex_key"):
+        time.sleep(long_delay)
         hex_d(keyboard.KeyCode.from_char(f'{hex_d_key}'))
         time.sleep(delay)
     if dpg.get_value("Ethereal_key"):
@@ -46,16 +47,25 @@ def main_combo():
         time.sleep(delay)
     if dpg.get_value("rocket_key"):
         rocket(keyboard.KeyCode.from_char(f'{rocket_key}'))
-        time.sleep(delay)
+        time.sleep(delay - 0.03)
     if dpg.get_value("Shivas guard"):
         shiva_guard(keyboard.KeyCode.from_char(f'{shiva_guard_key}'))
         time.sleep(long_delay)
     if dpg.get_value("laser_key"):
         laser(keyboard.KeyCode.from_char(f'{laser_key}'))
         time.sleep(0.5)
-
         laser(keyboard.KeyCode.from_char(f'{cansel_button}'))
+
     if dpg.get_value("rearm_key"):
+        # if dpg.get_value("lvl_rearm") == 1:
+        #     rearm(keyboard.KeyCode.from_char(f'{rearm_key}'))
+        #     time.sleep(3.3)
+        # elif dpg.get_value("lvl_rearm") == 2:
+        #     rearm(keyboard.KeyCode.from_char(f'{rearm_key}'))
+        #     time.sleep(2.3)
+        # elif dpg.get_value("lvl_rearm") == 3:
+        #     rearm(keyboard.KeyCode.from_char(f'{rearm_key}'))
+        #     time.sleep(1.3)
         rearm(keyboard.KeyCode.from_char(f'{rearm_key}'))
 
 
@@ -70,7 +80,7 @@ def rocket_combo():
 
     if dpg.get_value("rocket_key"):
         rocket(keyboard.KeyCode.from_char(f'{rocket_key}'))
-        time.sleep(delay)
+        time.sleep(delay - 0.03)
     if dpg.get_value("Shivas guard"):
         shiva_guard(keyboard.KeyCode.from_char(f'{shiva_guard_key}'))
         time.sleep(long_delay)
@@ -80,9 +90,8 @@ def rocket_combo():
 
 def rearm_combo():
     if dpg.get_value("Rearm+soul"):
-        rearm(keyboard.KeyCode.from_char(f'{rearm_key}'))
-        time.sleep(delay)
         soul_ring(keyboard.KeyCode.from_char(f'{soul_ring_key}'))
+        rearm(keyboard.KeyCode.from_char(f'{rearm_key}'))
 
 
 def on_press(key):

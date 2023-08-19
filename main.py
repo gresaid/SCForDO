@@ -15,7 +15,7 @@ def activate_deactivate_listener(Sender):
 
 
 with dpg.window(label="Tinker", width=500, height=500):
-    dpg.add_checkbox(label="Start/Stop Listening",
+    dpg.add_checkbox(label="Start/Stop Tinker",
                      callback=activate_deactivate_listener)
     dpg.add_checkbox(label="Soul Ring + Rearm", tag="Rearm+soul")
     dpg.add_slider_int(label="Level Rearm", default_value=1,
