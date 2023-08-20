@@ -1,5 +1,6 @@
 import dearpygui.dearpygui as dpg
 
+from roshan import count_down
 from tinker import start_listener, stop_listener
 
 
@@ -16,7 +17,7 @@ class GUI:
                     dpg.add_checkbox(label="News", tag="News")
                 with dpg.tab(label="Tinker"):
                     dpg.add_checkbox(label="Start/Stop",
-                                     callback=lambda: self.activate_deactivate_listener(),tag='SS_tinker')
+                                     callback=lambda: self.activate_deactivate_listener(), tag='SS_tinker')
                     dpg.add_checkbox(label="Soul Ring + Rearm", tag="Rearm+soul", default_value=True)
                     dpg.add_slider_int(label="Level Rearm", default_value=1,
                                        max_value=3, min_value=1, tag="lvl_rearm")
@@ -31,9 +32,25 @@ class GUI:
                         dpg.add_checkbox(label="Rocket", tag="rocket_key")
                         dpg.add_checkbox(label="Rearm", tag="rearm_key")
                 with dpg.tab(label='Legion'):
-                    dpg.add_checkbox(label="Legion", tag="Legion")
+                    dpg.add_checkbox(label="Start/Stop",
+                                     callback=lambda: self.activate_deactivate_listener(), tag='SS_legion')
+                    with dpg.collapsing_header(label="Item", default_open=True):
+                        dpg.add_checkbox(label="Blink dagger", tag="blink_key")
+                        dpg.add_checkbox(label="Blade mail", tag="soul_ring_key")
+                        dpg.add_checkbox(label="Blacking bar", tag="blacking_bar_key")
+                        dpg.add_checkbox(label="Orchid", tag="orchid_key")
+                    with dpg.collapsing_header(label="Skills", default_open=True):
+                        dpg.add_checkbox(label="Arrow", tag="arrow_key")
+                        dpg.add_checkbox(label="press_attack", tag="press_attack_key")
+                        dpg.add_checkbox(label="duel", tag="duel_key")
                 with dpg.tab(label='Roshan'):
-                    dpg.add_checkbox(label="Roshan", tag="Roshan")
+                    with dpg.group(horizontal=True):
+                        dpg.add_button(label="Start timer", tag="roshan_start_button", callback=lambda: count_down(),
+                                       width=150, height=150)
+                        dpg.add_button(label="Reset timer", tag='reset_roshan_timer', width=150, height=150)
+                        dpg.add_button(label="Copy timer", tag='copy_roshan_timer',
+                                       width=150, height=150)
+                    dpg.add_text(label='time', tag='roshan_timer')
 
         dpg.bind_theme('base_theme')
         dpg.setup_dearpygui()
