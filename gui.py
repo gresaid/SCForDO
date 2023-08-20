@@ -1,6 +1,6 @@
 import dearpygui.dearpygui as dpg
 
-from roshan import count_down
+from roshan import count_down, copy_timer, start_timer
 from tinker import start_listener, stop_listener
 
 
@@ -35,8 +35,8 @@ class GUI:
                     dpg.add_checkbox(label="Start/Stop",
                                      callback=lambda: self.activate_deactivate_listener(), tag='SS_legion')
                     with dpg.collapsing_header(label="Item", default_open=True):
-                        dpg.add_checkbox(label="Blink dagger", tag="blink_key")
-                        dpg.add_checkbox(label="Blade mail", tag="soul_ring_key")
+                        dpg.add_checkbox(label="Blink dagger", tag="legion_blink_key")
+                        dpg.add_checkbox(label="Blade mail", tag="legion_soul_ring_key")
                         dpg.add_checkbox(label="Blacking bar", tag="blacking_bar_key")
                         dpg.add_checkbox(label="Orchid", tag="orchid_key")
                     with dpg.collapsing_header(label="Skills", default_open=True):
@@ -45,10 +45,10 @@ class GUI:
                         dpg.add_checkbox(label="duel", tag="duel_key")
                 with dpg.tab(label='Roshan'):
                     with dpg.group(horizontal=True):
-                        dpg.add_button(label="Start timer", tag="roshan_start_button", callback=lambda: count_down(),
+                        dpg.add_button(label="Start timer", tag="roshan_start_button", callback=lambda: start_timer(),
                                        width=150, height=150)
                         dpg.add_button(label="Reset timer", tag='reset_roshan_timer', width=150, height=150)
-                        dpg.add_button(label="Copy timer", tag='copy_roshan_timer',
+                        dpg.add_button(label="Copy timer", tag='copy_roshan_timer', callback=lambda: copy_timer(),
                                        width=150, height=150)
                     dpg.add_text(label='time', tag='roshan_timer')
 
